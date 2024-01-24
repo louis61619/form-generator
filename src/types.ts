@@ -13,10 +13,10 @@ export type Properties = {
   [key: string]: Schema;
 };
 
-export type Comp = {
+export type CompInfo = {
   icon: JSX.Element;
   name: string;
   type: string;
-  playground: JSX.Element;
-  view: JSX.Element;
+  playground: React.ComponentType;
+  view: React.ComponentType;
 };

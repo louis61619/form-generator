@@ -5,22 +5,8 @@ import { usePlaygroundContext } from './context';
 // import { RenderSchema } from './render';
 
 const CanvasWrapper = styled.div`
-  border-radius: 8px;
-  padding: 24px;
-  background-color: #f2f8ff;
-  width: calc(100% - 180px);
-
-  & > .-title {
-    color: #292929;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 16px;
-  }
-
-  .-bot {
-    display: flex;
-    justify-content: flex-end;
-  }
+  /* border: 1px solid; */
+  flex: 1;
 `;
 
 export const Canvas = () => {

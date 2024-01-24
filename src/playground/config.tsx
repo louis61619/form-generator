@@ -1,7 +1,13 @@
+import styled from '@emotion/styled';
 import { usePlaygroundContext } from './context';
 
-export const Config = () => {
-  const { components } = usePlaygroundContext();
+const CofigWrapper = styled.div`
+  border-left: 1px solid ${(props) => props.theme.color.border};
+  width: 300px;
+`;
 
-  return <div></div>;
+export const Config = () => {
+  const { list } = usePlaygroundContext();
+
+  return <CofigWrapper></CofigWrapper>;
 };

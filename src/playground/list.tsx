@@ -1,18 +1,8 @@
-import { Icon } from '@iconify/react'
-import Text from '@iconify/icons-material-symbols/format-color-text'
-import Dropdown from '@iconify/icons-material-symbols/dropdown-outline-sharp'
+import { layoutComponentList } from '../layout';
 
-export const baseList = [
+export const list = [
   {
-    icon: <Icon icon={Text} />,
-    name: 'text'
+    groupName: 'layout',
+    components: layoutComponentList,
   },
-  {
-    icon: <Icon icon={Dropdown} />,
-
-  }
-]
-
-export const layoutList = [
-
-]
+];

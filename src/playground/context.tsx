@@ -1,25 +1,25 @@
 import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
 
 import { DragDropContext } from 'react-beautiful-dnd';
-import { Comp, Schema } from '../types';
+import { CompInfo, Schema } from '../types';
 
 type ContextType = {
   schema: Schema;
   setSchema: ((value: Schema) => void) | undefined;
-  components: Comp[];
+  list: { groupName: string; components: CompInfo[] }[];
 };
 
 export const PlaygroundContext = createContext<ContextType>({
   schema: { type: 'object' },
   setSchema: () => {},
-  components: [],
+  list: [],
 });
 
 export const PlaygroundProvider: React.FC<ContextType & { children: React.ReactNode }> = ({
   children,
   schema,
   setSchema,
-  components,
+  list,
   ...props
 }) => {
   return (
@@ -27,7 +27,7 @@ export const PlaygroundProvider: React.FC<ContextType & { children: React.ReactN
       value={{
         schema,
         setSchema,
-        components,
+        list,
         ...props,
       }}
     >

@@ -2,14 +2,27 @@ import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Schema } from '../types';
 import { PlaygroundProvider } from './context';
-import { Button } from '@mui/material';
-
-const componentsList: any = [];
+import { ToolBar } from './toolbar';
+import { Canvas } from './canvas';
+import { Config } from './config';
+import { list } from './list';
 
 const PlaygroundWrapper = styled.div`
   display: flex;
+  min-width: 1000px;
   width: 100%;
   height: 100%;
+
+  & > * {
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #00000026;
+      border-radius: 10px;
+      transition: all 0.2s ease-in-out;
+    }
+  }
 `;
 
 export const Playground: React.FC<{
@@ -17,12 +30,11 @@ export const Playground: React.FC<{
   setSchema?: (schema: Schema) => void;
 }> = ({ schema = { type: 'object' }, setSchema, ...props }) => {
   return (
-    <PlaygroundProvider {...props} schema={schema} setSchema={setSchema} components={componentsList}>
+    <PlaygroundProvider {...props} schema={schema} setSchema={setSchema} list={list}>
       <PlaygroundWrapper>
-        {/* <Button>jioj</Button> */}
-        {/* <ToolBar/>
+        <ToolBar />
         <Canvas />
-        <Config /> */}
+        <Config />
       </PlaygroundWrapper>
     </PlaygroundProvider>
   );

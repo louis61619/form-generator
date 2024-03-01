@@ -15,6 +15,14 @@ const ToolbarWrapper = styled.div`
   border-right: 1px solid ${(props) => props.theme.color.border};
   width: 250px;
 
+  .MuiButtonBase-root {
+    min-height: 50px;
+
+    .MuiAccordionSummary-content {
+      margin: 10px 0;
+    }
+  }
+
   .-icon-btn {
     display: grid;
     grid-template-columns: 1fr 1fr;

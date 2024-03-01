@@ -1,5 +1,4 @@
 import React from 'react';
-import { Icon } from '@iconify/react';
 
 export type Schema = {
   type: string;
@@ -13,9 +12,10 @@ export type Properties = {
   [key: string]: Schema;
 };
 
-export type CompInfo = {
+export type CompInfoType = {
   icon: JSX.Element;
   name: string;
+  group?: string;
   type: string;
   playground: React.ComponentType;
   view: React.ComponentType;

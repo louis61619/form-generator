@@ -1,12 +1,12 @@
 import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
 
 import { DragDropContext } from 'react-beautiful-dnd';
-import { CompInfo, Schema } from '../types';
+import { CompInfoType, Schema } from '../types';
 
 type ContextType = {
   schema: Schema;
   setSchema: ((value: Schema) => void) | undefined;
-  list: { groupName: string; components: CompInfo[] }[];
+  list: CompInfoType[];
 };
 
 export const PlaygroundContext = createContext<ContextType>({

@@ -1,1 +1,1 @@
-export const layoutComponentList = [];
+export { compInfo as column } from './column';

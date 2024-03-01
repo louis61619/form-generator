@@ -4,11 +4,11 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Global, css, Theme } from '@emotion/react';
 import { Header } from './common/header';
 
-const theme: Theme = {
+const theme: Theme = createTheme({
   color: {
     border: '#e4e7ed',
   },
-};
+});
 
 function App() {
   return (

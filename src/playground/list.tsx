@@ -1,8 +1,3 @@
-import { layoutComponentList } from '../layout';
+import { column } from '../layout';
 
-export const list = [
-  {
-    groupName: 'layout',
-    components: layoutComponentList,
-  },
-];
+export const list = [column];

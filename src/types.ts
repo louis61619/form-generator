@@ -5,11 +5,15 @@ export type Schema = {
   title?: string;
   description?: string;
   properties?: Properties;
-  order?: (keyof Properties)[];
-};
+  order?: string[];
+} & { [key: string]: any };
 
 export type Properties = {
   [key: string]: Schema;
+};
+
+export type PlaygroundProps = {
+  uuid: string;
 };
 
 export type CompInfoType = {
@@ -17,6 +21,6 @@ export type CompInfoType = {
   name: string;
   group?: string;
   type: string;
-  playground: React.ComponentType;
+  playground: React.ComponentType<PlaygroundProps>;
   view: React.ComponentType;
 };

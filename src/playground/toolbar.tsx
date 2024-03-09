@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React, { forwardRef, useRef } from 'react';
 import { usePlaygroundContext } from './context';
-import { Droppable, Draggable } from './dnd';
+import { Droppable, Draggable } from '../common/dnd';
 import { CompInfoType } from '../types';
 import { DraggableStateSnapshot } from 'react-beautiful-dnd';
 import Accordion from '@mui/material/Accordion';
@@ -22,11 +22,13 @@ const ToolbarWrapper = styled.div`
       margin: 10px 0;
     }
   }
-
-  .-icon-btn {
+  .-btns {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5px;
+  }
+  .-icon-btn {
+    cursor: grab;
   }
 `;
 
@@ -56,17 +58,17 @@ const IconBlock = forwardRef<
 >(({ comp, snapshot, ...props }, ref) => {
   const { icon, name } = comp;
 
-  let style = props.style;
-  if (snapshot && snapshot.isDropAnimating && snapshot.draggingOver) {
-    style = {
-      ...style,
-      transitionDuration: `0.0000001s`,
-      opacity: 0,
-    };
-  }
+  // let style = props.style;
+  // if (snapshot && snapshot.isDropAnimating && snapshot.draggingOver) {
+  //   style = {
+  //     ...style,
+  //     transitionDuration: `0.0000001s`,
+  //     opacity: 0,
+  //   };
+  // }
 
   return (
-    <IconBlockWrapper ref={ref} {...props} style={style}>
+    <IconBlockWrapper ref={ref} {...props}>
       {icon}
       <span className="-txt">{name}</span>
     </IconBlockWrapper>
@@ -95,7 +97,7 @@ export const ToolBar = () => {
       <ToolbarWrapper>
         {list.map((item, index) => {
           return (
-            <Accordion>
+            <Accordion key={index} defaultExpanded>
               <AccordionSummary
                 expandIcon={<Icon icon={ArrowDown} />}
                 aria-controls={`panel-content-${index}`}
@@ -104,17 +106,12 @@ export const ToolBar = () => {
                 {item.groupName}
               </AccordionSummary>
               <AccordionDetails>
-                <div>
+                <div className="-btns">
                   {item.components.map((comp, index) => {
                     const { type } = comp;
 
                     return (
-                      <Droppable
-                        // type='toolbar'
-                        droppableId={'[bar]' + type}
-                        key={type}
-                        isDropDisabled={true}
-                      >
+                      <Droppable droppableId={'[bar]' + type} key={'[bar]' + type} isDropDisabled={true}>
                         {(provided, snapshot) => (
                           <div className="-icon-btn" ref={provided.innerRef}>
                             <Draggable key={type} draggableId={type} index={index}>

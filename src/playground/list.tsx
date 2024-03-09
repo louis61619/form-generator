@@ -1,3 +1,3 @@
-import { column } from '../layout';
+import { column, inline } from '../layout';
 
-export const list = [column];
+export const list = [column, inline];

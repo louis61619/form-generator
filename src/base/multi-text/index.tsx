@@ -4,12 +4,11 @@ import { Playground } from './playground';
 import { View } from './view';
 import { CompInfoType } from '../../types';
 
-// grid layout
 export const compInfo: CompInfoType = {
   icon: <Icon icon={Column} />,
   type: 'column',
   name: 'column',
-  group: 'layout',
+  group: 'basic',
   playground: Playground,
   view: View,
 };

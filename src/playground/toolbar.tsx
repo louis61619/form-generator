@@ -2,31 +2,29 @@ import styled from '@emotion/styled';
 import React, { forwardRef, useRef } from 'react';
 import { usePlaygroundContext } from './context';
 import { Droppable, Draggable } from '../common/dnd';
-import { CompInfoType } from '../types';
+import { CompConfigType } from '../types/schema';
 import { DraggableStateSnapshot } from 'react-beautiful-dnd';
-import Accordion from '@mui/material/Accordion';
-import AccordionActions from '@mui/material/AccordionActions';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import { Icon } from '@iconify/react';
-import ArrowDown from '@iconify/icons-material-symbols/keyboard-arrow-down';
 
 const ToolbarWrapper = styled.div`
   border-right: 1px solid ${(props) => props.theme.color.border};
   width: 250px;
+  padding: 0 10px;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px; */
 
-  .MuiButtonBase-root {
-    min-height: 50px;
-
-    .MuiAccordionSummary-content {
-      margin: 10px 0;
-    }
+  .-title {
+    padding: 4px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid ${(props) => props.theme.color.border};
   }
+
   .-btns {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5px;
   }
+
   .-icon-btn {
     cursor: grab;
   }
@@ -35,9 +33,10 @@ const ToolbarWrapper = styled.div`
 const IconBlockWrapper = styled.div`
   display: flex;
   align-items: center;
-  border-bottom: 1px solid ${(props) => props.theme.color.border};
+  border: 1px solid ${(props) => props.theme.color.border};
   padding: 8px 0;
   background-color: #fff;
+  padding: 4px;
 
   .-icon {
     width: 20px;
@@ -54,7 +53,7 @@ const IconBlockWrapper = styled.div`
 
 const IconBlock = forwardRef<
   any,
-  { comp: CompInfoType; style?: React.CSSProperties; snapshot?: DraggableStateSnapshot }
+  { comp: CompConfigType; style?: React.CSSProperties; snapshot?: DraggableStateSnapshot }
 >(({ comp, snapshot, ...props }, ref) => {
   const { icon, name } = comp;
 
@@ -75,7 +74,7 @@ const IconBlock = forwardRef<
   );
 });
 
-type GroupComponentsListType = { groupName: string; components: CompInfoType[] }[];
+type GroupComponentsListType = { groupName: string; components: CompConfigType[] }[];
 export const ToolBar = () => {
   const { list: componentList } = usePlaygroundContext();
   const list = componentList.reduce((pre: GroupComponentsListType, cur) => {
@@ -96,16 +95,35 @@ export const ToolBar = () => {
     <>
       <ToolbarWrapper>
         {list.map((item, index) => {
+          // const { type } = comp;
+
           return (
-            <Accordion key={index} defaultExpanded>
-              <AccordionSummary
-                expandIcon={<Icon icon={ArrowDown} />}
-                aria-controls={`panel-content-${index}`}
-                id={`panel-header-${index}`}
-              >
-                {item.groupName}
-              </AccordionSummary>
-              <AccordionDetails>
+            // <Droppable droppableId={'[bar]' + type} key={'[bar]' + type} isDropDisabled={true}>
+            //   {(provided, snapshot) => (
+            //     <div className="-icon-btn" ref={provided.innerRef}>
+            //       <Draggable key={type} draggableId={type} index={index}>
+            //         {(provided, snapshot) => {
+            //           return (
+            //             <>
+            //               <IconBlock
+            //                 comp={comp}
+            //                 {...provided.draggableProps}
+            //                 {...provided.dragHandleProps}
+            //                 snapshot={snapshot}
+            //                 ref={provided.innerRef}
+            //               />
+            //               {snapshot.isDragging && <IconBlock comp={comp} />}
+            //             </>
+            //           );
+            //         }}
+            //       </Draggable>
+            //       <div style={{ position: 'absolute' }}>{provided.placeholder}</div>
+            //     </div>
+            //   )}
+            // </Droppable>
+            <div key={index}>
+              <div className="-title">{item.groupName}</div>
+              <div>
                 <div className="-btns">
                   {item.components.map((comp, index) => {
                     const { type } = comp;
@@ -137,8 +155,8 @@ export const ToolBar = () => {
                     );
                   })}
                 </div>
-              </AccordionDetails>
-            </Accordion>
+              </div>
+            </div>
           );
         })}
       </ToolbarWrapper>

@@ -1,14 +1,14 @@
 import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
 
 import { DragDropContext } from 'react-beautiful-dnd';
-import { CompInfoType, Schema } from '../types';
+import { CompConfigType, Schema } from '../types/schema';
 import { genUUID } from '../utils/gen-uuid';
 
 type ContextType = {
   schema: Schema;
   setSchema: ((value: Schema) => void) | undefined;
-  list: CompInfoType[];
-  compsMap: { [key: string]: CompInfoType };
+  list: CompConfigType[];
+  compsMap: { [key: string]: CompConfigType };
 };
 
 const reorder = (list: string[], startIndex: number, endIndex: number) => {
@@ -43,7 +43,7 @@ export const PlaygroundProvider: React.FC<Omit<ContextType, 'compsMap'> & { chil
   list,
   ...props
 }) => {
-  const compsMap: { [key: string]: CompInfoType } = useMemo(() => {
+  const compsMap: { [key: string]: CompConfigType } = useMemo(() => {
     return list.reduce((pre, cur) => {
       return {
         ...pre,

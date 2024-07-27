@@ -13,6 +13,10 @@ const CanvasWrapper = styled.div`
   flex: 1;
   overflow-y: scroll;
   /* width: 100px; */
+
+  & > div {
+    min-height: 100%;
+  }
 `;
 
 export const Canvas = () => {
@@ -36,7 +40,7 @@ export const Canvas = () => {
       <Droppable droppableId={'canvas'}>
         {(provided) => {
           return (
-            <div style={{ minHeight: 300 }} {...provided.droppableProps} ref={provided.innerRef}>
+            <div {...provided.droppableProps} ref={provided.innerRef}>
               {/* <Column id="1" />
               <Column id="2" /> */}
               <RenderSchema schema={schema} />
@@ -45,8 +49,6 @@ export const Canvas = () => {
           );
         }}
       </Droppable>
-      {/* <Column id="1" />
-      <Column id="2" /> */}
     </CanvasWrapper>
   );
 };

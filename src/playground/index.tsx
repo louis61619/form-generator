@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Schema } from '../types';
+import { Schema } from '../types/schema';
 import { PlaygroundProvider } from './context';
 import { ToolBar } from './toolbar';
 import { Canvas } from './canvas';

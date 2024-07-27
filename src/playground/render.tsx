@@ -1,4 +1,4 @@
-import { Schema } from '../types';
+import { Schema } from '../types/schema';
 import { usePlaygroundContext } from './context';
 import { Block } from './block';
 

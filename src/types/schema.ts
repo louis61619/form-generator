@@ -16,7 +16,10 @@ export type PlaygroundProps = {
   uuid: string;
 };
 
-export type CompInfoType = {
+/**
+ * @desc config type use in schema, type must be only
+ */
+export type CompConfigType = {
   icon: JSX.Element;
   name: string;
   group?: string;
@@ -24,3 +27,5 @@ export type CompInfoType = {
   playground: React.ComponentType<PlaygroundProps>;
   view: React.ComponentType;
 };
+
+export type PlaygroundCompProps = React.FC<PlaygroundProps>;

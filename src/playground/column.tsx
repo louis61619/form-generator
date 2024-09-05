@@ -1,6 +1,6 @@
 import React from 'react';
 import { Droppable, Draggable } from '../common/dnd';
-import { DragIcon } from '../common/drag-btn';
+import { DragIcon } from '../common/icons';
 
 interface ColumnProps {
   id: string;

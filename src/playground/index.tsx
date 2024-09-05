@@ -29,8 +29,10 @@ export const Playground: React.FC<{
   schema?: Schema;
   setSchema?: (schema: Schema) => void;
 }> = ({ schema = { type: 'object' }, setSchema, ...props }) => {
+  const [_schema, _setSchema] = useState(schema);
+
   return (
-    <PlaygroundProvider {...props} schema={schema} setSchema={setSchema} list={list}>
+    <PlaygroundProvider {...props} schema={_schema} setSchema={_setSchema} list={list}>
       <PlaygroundWrapper>
         <ToolBar />
         <Canvas />

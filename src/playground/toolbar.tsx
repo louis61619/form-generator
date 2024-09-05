@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import React, { forwardRef, useRef } from 'react';
 import { usePlaygroundContext } from './context';
 import { Droppable, Draggable } from '../common/dnd';
-import { CompConfigType } from '../types/schema';
+import { CompInfoType } from '../types/schema';
 import { DraggableStateSnapshot } from 'react-beautiful-dnd';
 
 const ToolbarWrapper = styled.div`
@@ -53,7 +53,7 @@ const IconBlockWrapper = styled.div`
 
 const IconBlock = forwardRef<
   any,
-  { comp: CompConfigType; style?: React.CSSProperties; snapshot?: DraggableStateSnapshot }
+  { comp: CompInfoType; style?: React.CSSProperties; snapshot?: DraggableStateSnapshot }
 >(({ comp, snapshot, ...props }, ref) => {
   const { icon, name } = comp;
 
@@ -74,7 +74,7 @@ const IconBlock = forwardRef<
   );
 });
 
-type GroupComponentsListType = { groupName: string; components: CompConfigType[] }[];
+type GroupComponentsListType = { groupName: string; components: CompInfoType[] }[];
 export const ToolBar = () => {
   const { list: componentList } = usePlaygroundContext();
   const list = componentList.reduce((pre: GroupComponentsListType, cur) => {

@@ -8,11 +8,9 @@ import Column from './column';
 import { Block } from './block';
 
 const CanvasWrapper = styled.div`
-  /* border: 1px solid; */
-  /* background-color: aqua; */
+  padding: 0 8px;
   flex: 1;
-  overflow-y: scroll;
-  /* width: 100px; */
+  /* overflow-y: scroll; */
 
   & > div {
     min-height: 100%;
@@ -41,8 +39,6 @@ export const Canvas = () => {
         {(provided) => {
           return (
             <div {...provided.droppableProps} ref={provided.innerRef}>
-              {/* <Column id="1" />
-              <Column id="2" /> */}
               <RenderSchema schema={schema} />
               {provided.placeholder}
             </div>

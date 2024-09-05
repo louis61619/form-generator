@@ -2,13 +2,14 @@ import { Icon } from '@iconify/react';
 import Column from '@iconify/icons-material-symbols/view-column-outline-sharp';
 import { Playground } from './playground';
 import { View } from './view';
-import { CompConfigType } from '../../types/schema';
+import { CompInfoType } from '../../types/schema';
 
-export const compInfo: CompConfigType = {
+export const compInfo: CompInfoType = {
   icon: <Icon icon={Column} />,
   type: 'column',
   name: 'column',
   group: 'basic',
   playground: Playground,
   view: View,
+  config: () => <div></div>,
 };

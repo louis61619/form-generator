@@ -1,18 +1,15 @@
 import React from 'react';
 import { Playground } from './playground';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@emotion/react';
 import { Global, css, Theme } from '@emotion/react';
 import { Header } from './common/header';
+import { theme } from './common/theme';
 
-const theme: Theme = createTheme({
-  color: {
-    border: '#e4e7ed',
-  },
-});
+const appTheme: Theme = theme;
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={appTheme}>
       <Global
         styles={css`
           html,

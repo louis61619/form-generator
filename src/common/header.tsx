@@ -11,7 +11,7 @@ const HeaderWrapper = styled.header`
 
   & > div {
     margin: 0 auto;
-    max-width: 800px;
+    max-width: calc(100% - 600px);
     height: 100%;
     display: flex;
     align-items: center;

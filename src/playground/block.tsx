@@ -39,15 +39,16 @@ const BlockWrapper = styled.div`
     position: absolute;
     top: 0;
     right: 0;
+    display: flex;
 
     & > div {
       background-color: ${(props) => props.theme.color.primary};
       color: #fff;
       cursor: pointer;
-      display: inline-block;
       padding: 2px 2px 0;
       margin-left: 2px;
-      font-size: 14px;
+      font-size: 0.8rem;
+      height: 100%;
     }
   }
 `;

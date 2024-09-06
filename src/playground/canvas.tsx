@@ -8,9 +8,9 @@ import Column from './column';
 import { Block } from './block';
 
 const CanvasWrapper = styled.div`
-  padding: 0 8px;
+  padding: 8px;
   flex: 1;
-  /* overflow-y: scroll; */
+  overflow-y: auto;
 
   & > div {
     min-height: 100%;

@@ -8,6 +8,7 @@ const CofigWrapper = styled.div`
   border-left: 1px solid ${(props) => props.theme.color.border};
   width: 300px;
   padding: 0 10px;
+  overflow-y: auto;
 
   .MuiFormControl-root {
     width: 100%;

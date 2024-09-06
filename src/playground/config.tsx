@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { usePlaygroundContext } from './context';
 import { useMemo } from 'react';
@@ -19,7 +20,18 @@ const NoConfigComp = () => {
 };
 
 export const Config = () => {
-  const { list, currentId, compsMap, keyToContentMap, updateConfigValueById } = usePlaygroundContext();
+  const { list, currentId, compsMap, keyToContentMap, updateConfigValueById, initId, setInitId } =
+    usePlaygroundContext();
+  const [isInit, setIsInit] = useState(false);
+
+  useEffect(() => {
+    if (initId === currentId) {
+      setIsInit(true);
+    } else {
+      setIsInit(false);
+    }
+    setInitId('');
+  }, [initId, currentId, setInitId]);
 
   const { Comp, props, type } = useMemo(() => {
     const props = keyToContentMap[currentId];
@@ -53,6 +65,7 @@ export const Config = () => {
         type={type}
         configValue={props.configValue || {}}
         onUpdate={(d) => updateConfigValueById(d, currentId)}
+        isInit={isInit}
       />
     </CofigWrapper>
   );

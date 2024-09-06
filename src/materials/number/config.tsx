@@ -1,5 +1,6 @@
 import { ConfigCompProps } from '../../types/schema';
 import { CompProps } from './type';
+import { MultiInput } from '../../common/multi-input';
 import { CommonConfig, CommonConfigProps } from '../common';
 import { Switch, Input } from '@mantine/core';
 import { Title } from '../../common/title';

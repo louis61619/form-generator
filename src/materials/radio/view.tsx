@@ -5,8 +5,6 @@ import { useField } from '@mantine/form';
 import { CommonConfig } from '../common';
 
 export const View: ViewCompProps<CompProps> = ({ configValue }) => {
-  const { label } = configValue;
-
   const field = useField({
     initialValue: '',
     validate: (value) => (value.trim().length < 2 ? 'Value is too short' : null),

@@ -18,6 +18,8 @@ type ContextType = {
   keyToContentMap: { [key: string]: Schema };
   updateConfigValueById: (value: any, id: string) => void;
   deleteContentById: (id: string) => void;
+  initId: string;
+  setInitId: (id: string) => void;
 } & PlaygroundProviderProps;
 
 const reorder = (list: string[] = [], startIndex: number, endIndex: number) => {
@@ -48,6 +50,8 @@ export const PlaygroundContext = createContext<ContextType>({
   keyToContentMap: {},
   updateConfigValueById: () => {},
   deleteContentById: () => {},
+  initId: '',
+  setInitId: () => {},
 });
 
 export const PlaygroundProvider: React.FC<PlaygroundProviderProps & { children: React.ReactNode }> = ({
@@ -58,6 +62,7 @@ export const PlaygroundProvider: React.FC<PlaygroundProviderProps & { children: 
   ...props
 }) => {
   const [currentId, setCurrentId] = useState<string>('');
+  const [initId, setInitId] = useState<string>('');
 
   const compsMap: { [key: string]: CompInfoType } = useMemo(() => {
     return list.reduce((pre, cur) => {
@@ -106,6 +111,8 @@ export const PlaygroundProvider: React.FC<PlaygroundProviderProps & { children: 
         keyToContentMap,
         updateConfigValueById,
         deleteContentById,
+        initId,
+        setInitId,
       }}
     >
       <DragDropContext
@@ -124,6 +131,7 @@ export const PlaygroundProvider: React.FC<PlaygroundProviderProps & { children: 
             const compKey = addPropertiesToContent(content, draggableId);
             content.order?.splice(destination.index, 0, compKey);
             setCurrentId(compKey);
+            setInitId(compKey);
           } else {
             schema.order = reorder(schema.order, source.index, destination.index);
           }

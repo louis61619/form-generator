@@ -22,6 +22,7 @@ export type ConfigProps<D> = {
   onUpdate: (data: Partial<D>) => void;
   configValue: Partial<D>;
   type: string;
+  isInit: boolean;
 };
 
 export type ConfigCompProps<D = {}> = React.ComponentType<ConfigProps<D>>;

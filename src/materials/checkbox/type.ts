@@ -1,7 +1,4 @@
 export type CompProps = {
-  label: string;
-  description: string;
-  error: string;
-  value: string;
+  options: string[];
   disabled: boolean;
 };

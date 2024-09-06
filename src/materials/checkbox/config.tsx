@@ -1,3 +1,4 @@
+import { MultiInput } from '../../common/multi-input';
 import { ConfigCompProps } from '../../types/schema';
 import { CompProps } from './type';
 import { CommonConfig, CommonConfigProps } from '../common';
@@ -14,6 +15,9 @@ export const Config: ConfigCompProps<CompProps & CommonConfigProps> = ({ ...prop
     <div>
       <CommonConfig {...props} />
       <Title>Props</Title>
+      <Input.Wrapper label="Options">
+        <MultiInput value={configValue.options} onUpdate={(v) => _onUpdate('options', v)} />
+      </Input.Wrapper>
       <Input.Wrapper label="Disabled">
         <Switch checked={configValue.disabled} onChange={(e) => _onUpdate('disabled', e.currentTarget.checked)} />
       </Input.Wrapper>

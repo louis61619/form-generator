@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ThemeProvider } from '@emotion/react';
+import { theme } from '../common/theme';
 import { Schema } from '../types/schema';
 import { PlaygroundProvider } from './context';
 import { ToolBar } from './toolbar';
@@ -32,12 +34,14 @@ export const Playground: React.FC<{
   const [_schema, _setSchema] = useState(schema);
 
   return (
-    <PlaygroundProvider {...props} schema={_schema} setSchema={_setSchema} list={list}>
-      <PlaygroundWrapper>
-        <ToolBar />
-        <Canvas />
-        <Config />
-      </PlaygroundWrapper>
-    </PlaygroundProvider>
+    <ThemeProvider theme={theme}>
+      <PlaygroundProvider {...props} schema={_schema} setSchema={_setSchema} list={list}>
+        <PlaygroundWrapper>
+          <ToolBar />
+          <Canvas />
+          <Config />
+        </PlaygroundWrapper>
+      </PlaygroundProvider>
+    </ThemeProvider>
   );
 };

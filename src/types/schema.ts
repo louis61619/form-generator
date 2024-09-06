@@ -34,12 +34,11 @@ export type ViewCompProps<D = {}> = React.ComponentType<{ configValue: Partial<D
  * @desc config type use in schema, type must be only
  */
 export type CompInfoType<D = {}> = {
-  icon: JSX.Element;
+  icon?: JSX.Element;
   name: string;
   group?: string;
   type: string;
   playground: PlaygroundCompProps<D>;
   view: React.ComponentType<{ configValue: Partial<D> }>;
   config: ConfigCompProps<D>;
-  order?: number;
 };

@@ -1,16 +1,14 @@
 import { PlaygroundCompProps } from '../../types/schema';
 import { CompProps } from './type';
-import { Input } from '@mantine/core';
+import { Input, NumberInput } from '@mantine/core';
 import { CommonConfig, CommonInputWrapper } from '../common';
 
 export const Playground: PlaygroundCompProps<CompProps> = ({ uuid, configValue }) => {
-  const { label } = configValue;
-
-  console.log(configValue);
+  const { disabled } = configValue;
 
   return (
     <CommonInputWrapper {...configValue}>
-      <Input {...configValue} />
+      <NumberInput disabled={disabled} />
     </CommonInputWrapper>
   );
 };

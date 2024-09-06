@@ -7,9 +7,10 @@ const size = 'small';
 export type CommonConfigProps = {
   field: string;
   label: string;
+  description: string;
 };
 
-export const TypeFeiled: React.FC<{ type: string }> = ({ type }) => {
+export const TypeFeild: ConfigCompProps<CommonConfigProps & { type: string }> = ({ type }) => {
   return (
     <>
       <Input.Wrapper label="Type">
@@ -22,12 +23,12 @@ export const TypeFeiled: React.FC<{ type: string }> = ({ type }) => {
 };
 
 export const CommonConfig: ConfigCompProps<CommonConfigProps> = ({ ...props }) => {
-  const { onUpdate, configValue, type } = props;
-  const { field, label } = configValue;
+  const { onUpdate, configValue } = props;
+  const { field, label, description } = configValue;
 
   return (
     <>
-      <TypeFeiled type={type} />
+      <TypeFeild {...props} />
       <Title>Basis</Title>
       <Input.Wrapper label="Field">
         <Input
@@ -47,6 +48,17 @@ export const CommonConfig: ConfigCompProps<CommonConfigProps> = ({ ...props }) =
             onUpdate({
               ...configValue,
               label: e.target.value,
+            });
+          }}
+        />
+      </Input.Wrapper>
+      <Input.Wrapper label="Description">
+        <Input
+          value={description}
+          onChange={(e) => {
+            onUpdate({
+              ...configValue,
+              description: e.target.value,
             });
           }}
         />

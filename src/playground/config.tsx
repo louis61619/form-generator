@@ -48,7 +48,12 @@ export const Config = () => {
 
   return (
     <CofigWrapper>
-      <Comp type={type} configValue={props.configValue || {}} onUpdate={(d) => updateConfigValueById(d, currentId)} />
+      <Comp
+        key={currentId}
+        type={type}
+        configValue={props.configValue || {}}
+        onUpdate={(d) => updateConfigValueById(d, currentId)}
+      />
     </CofigWrapper>
   );
 };

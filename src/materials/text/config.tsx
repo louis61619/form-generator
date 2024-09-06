@@ -1,6 +1,6 @@
 import { ConfigCompProps } from '../../types/schema';
 import { CompProps } from './type';
-import { CommonConfig, CommonConfigProps } from '../common';
+import { TypeFeild, CommonConfigProps } from '../common';
 import { Switch, Input } from '@mantine/core';
 import { Title } from '../../common/title';
 
@@ -12,10 +12,10 @@ export const Config: ConfigCompProps<CompProps & CommonConfigProps> = ({ ...prop
 
   return (
     <div>
-      <CommonConfig {...props} />
+      <TypeFeild {...props} />
       <Title>Props</Title>
-      <Input.Wrapper label="Disabled">
-        <Switch checked={configValue.disabled} onChange={(e) => _onUpdate('disabled', e.currentTarget.checked)} />
+      <Input.Wrapper label="Content">
+        <Input onChange={(e) => _onUpdate('content', e.currentTarget.value)}></Input>
       </Input.Wrapper>
     </div>
   );

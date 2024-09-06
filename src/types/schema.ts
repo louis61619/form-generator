@@ -15,17 +15,20 @@ export type Properties = {
 
 export type PlaygroundProps<D> = {
   uuid: string;
-  configValue: D;
+  configValue: Partial<D>;
 };
 
 export type ConfigProps<D> = {
-  onUpdate: (data: D) => void;
-  configValue: D;
+  onUpdate: (data: Partial<D>) => void;
+  configValue: Partial<D>;
+  type: string;
 };
 
-export type CompConfigProps<D = {}> = React.ComponentType<ConfigProps<D>>;
+export type ConfigCompProps<D = {}> = React.ComponentType<ConfigProps<D>>;
 
 export type PlaygroundCompProps<D = {}> = React.ComponentType<PlaygroundProps<D>>;
+
+export type ViewCompProps<D = {}> = React.ComponentType<{ configValue: Partial<D> }>;
 
 /**
  * @desc config type use in schema, type must be only
@@ -36,6 +39,7 @@ export type CompInfoType<D = {}> = {
   group?: string;
   type: string;
   playground: PlaygroundCompProps<D>;
-  view: React.ComponentType<{ configValue: D }>;
-  config: CompConfigProps<D>;
+  view: React.ComponentType<{ configValue: Partial<D> }>;
+  config: ConfigCompProps<D>;
+  order?: number;
 };

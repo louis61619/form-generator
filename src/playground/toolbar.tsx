@@ -4,25 +4,17 @@ import { usePlaygroundContext } from './context';
 import { Droppable, Draggable } from '../common/dnd';
 import { CompInfoType } from '../types/schema';
 import { DraggableStateSnapshot } from 'react-beautiful-dnd';
+import { Title } from '../common/title';
 
 const ToolbarWrapper = styled.div`
   border-right: 1px solid ${(props) => props.theme.color.border};
   width: 250px;
   padding: 0 10px;
-  /* display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5px; */
-
-  .-title {
-    padding: 4px;
-    margin-bottom: 12px;
-    border-bottom: 1px solid ${(props) => props.theme.color.border};
-  }
 
   .-btns {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5px;
+    gap: 12px;
   }
 
   .-icon-btn {
@@ -37,6 +29,10 @@ const IconBlockWrapper = styled.div`
   padding: 8px 0;
   background-color: #fff;
   padding: 4px;
+
+  :hover {
+    border: 1px solid ${(props) => props.theme.color.primary};
+  }
 
   .-icon {
     width: 20px;
@@ -98,31 +94,8 @@ export const ToolBar = () => {
           // const { type } = comp;
 
           return (
-            // <Droppable droppableId={'[bar]' + type} key={'[bar]' + type} isDropDisabled={true}>
-            //   {(provided, snapshot) => (
-            //     <div className="-icon-btn" ref={provided.innerRef}>
-            //       <Draggable key={type} draggableId={type} index={index}>
-            //         {(provided, snapshot) => {
-            //           return (
-            //             <>
-            //               <IconBlock
-            //                 comp={comp}
-            //                 {...provided.draggableProps}
-            //                 {...provided.dragHandleProps}
-            //                 snapshot={snapshot}
-            //                 ref={provided.innerRef}
-            //               />
-            //               {snapshot.isDragging && <IconBlock comp={comp} />}
-            //             </>
-            //           );
-            //         }}
-            //       </Draggable>
-            //       <div style={{ position: 'absolute' }}>{provided.placeholder}</div>
-            //     </div>
-            //   )}
-            // </Droppable>
             <div key={index}>
-              <div className="-title">{item.groupName}</div>
+              <Title>{item.groupName}</Title>
               <div>
                 <div className="-btns">
                   {item.components.map((comp, index) => {

@@ -16,7 +16,8 @@ type ContextType = {
   currentId: string;
   setCurrentId: (id: string) => void;
   keyToContentMap: { [key: string]: Schema };
-  updateConfigValueById: (value: any) => void;
+  updateConfigValueById: (value: any, id: string) => void;
+  deleteContentById: (id: string) => void;
 } & PlaygroundProviderProps;
 
 const reorder = (list: string[] = [], startIndex: number, endIndex: number) => {
@@ -46,6 +47,7 @@ export const PlaygroundContext = createContext<ContextType>({
   setCurrentId: () => {},
   keyToContentMap: {},
   updateConfigValueById: () => {},
+  deleteContentById: () => {},
 });
 
 export const PlaygroundProvider: React.FC<PlaygroundProviderProps & { children: React.ReactNode }> = ({
@@ -66,16 +68,29 @@ export const PlaygroundProvider: React.FC<PlaygroundProviderProps & { children: 
     }, {});
   }, [list]);
 
-  const keyToContentMap = useMemo(() => {
+  const { keyMap: keyToContentMap, keyRelationMap } = useMemo(() => {
     return getKeepKeyToIdMap(schema);
   }, [schema]);
 
   const updateConfigValueById = useCallback(
-    (value: any) => {
-      keyToContentMap[currentId].configValue = value;
+    (value: any, id: string) => {
+      keyToContentMap[id].configValue = value;
       setSchema?.({ ...schema });
     },
-    [currentId, keyToContentMap, schema, setSchema],
+    [keyToContentMap, schema, setSchema],
+  );
+
+  const deleteContentById = useCallback(
+    (id: string) => {
+      const parent = keyRelationMap[id].parent;
+      if (!parent.order || !parent.properties) return;
+
+      delete parent.properties[id];
+      parent.order = parent.order.filter((contentId: string) => contentId !== id);
+
+      setSchema?.({ ...schema });
+    },
+    [keyRelationMap, schema, setSchema],
   );
 
   return (
@@ -90,6 +105,7 @@ export const PlaygroundProvider: React.FC<PlaygroundProviderProps & { children: 
         setCurrentId,
         keyToContentMap,
         updateConfigValueById,
+        deleteContentById,
       }}
     >
       <DragDropContext

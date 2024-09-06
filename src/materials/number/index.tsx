@@ -3,13 +3,15 @@ import Column from '@iconify/icons-material-symbols/view-column-outline-sharp';
 import { Playground } from './playground';
 import { View } from './view';
 import { CompInfoType } from '../../types/schema';
+import { Config } from './config';
+import { CompProps } from './type';
 
-export const compInfo: CompInfoType = {
+export const compInfo: CompInfoType<CompProps> = {
   icon: <Icon icon={Column} />,
-  type: 'column',
-  name: 'column',
+  type: 'number',
+  name: 'number',
   group: 'basic',
   playground: Playground,
   view: View,
-  config: () => <div></div>,
+  config: Config,
 };

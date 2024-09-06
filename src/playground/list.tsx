@@ -1,6 +1,4 @@
-// layout is not support with use react beautiful dnd
-// import * as layout from '../layout';
-import * as baseComps from '../base';
+import * as baseComps from '../materials';
 import { CompInfoType } from '../types/schema';
 
 const baseCompsList: CompInfoType[] = Object.keys(baseComps).map((key) => {

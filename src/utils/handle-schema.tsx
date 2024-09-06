@@ -1,8 +1,14 @@
 import { Schema } from '../types/schema';
 
 export function getKeepKeyToIdMap(schema: Schema) {
-  if (!schema) return {};
-  const keepIdMap: { [key: string]: Schema } = {};
+  if (!schema) {
+    return {
+      keyMap: {},
+      keyRelationMap: {},
+    };
+  }
+  const keyMap: { [key: string]: Schema } = {};
+  const keyRelationMap: { [key: string]: Schema & { id: string; parent: Schema } } = {};
 
   function traversalSchema(schema: Schema) {
     if (!schema.order) return;
@@ -10,13 +16,14 @@ export function getKeepKeyToIdMap(schema: Schema) {
       const key = schema.order[i];
       let content = schema.properties?.[key];
       if (content) {
-        // const newContent = { id: key, parent: schema, ...content };
-        keepIdMap[key] = content;
+        const relation = { id: key, parent: schema, ...content };
+        keyMap[key] = content;
+        keyRelationMap[key] = relation;
         traversalSchema(content);
       }
     }
   }
   traversalSchema(schema);
 
-  return keepIdMap;
+  return { keyMap, keyRelationMap };
 }

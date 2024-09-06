@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { usePlaygroundContext } from './context';
 import { useMemo } from 'react';
-import { CompConfigProps } from '../types/schema';
+import { ConfigCompProps } from '../types/schema';
 
 const CofigWrapper = styled.div`
   border-left: 1px solid ${(props) => props.theme.color.border};
@@ -21,7 +21,7 @@ const NoConfigComp = () => {
 export const Config = () => {
   const { list, currentId, compsMap, keyToContentMap, updateConfigValueById } = usePlaygroundContext();
 
-  const { Comp, props } = useMemo(() => {
+  const { Comp, props, type } = useMemo(() => {
     const props = keyToContentMap[currentId];
 
     if (!props) {
@@ -34,10 +34,9 @@ export const Config = () => {
     return {
       props,
       Comp: compsMap[props.type].config,
+      type: props.type,
     };
   }, [currentId, keyToContentMap, compsMap]);
-
-  console.log(keyToContentMap);
 
   if (!Comp) {
     return (
@@ -49,7 +48,7 @@ export const Config = () => {
 
   return (
     <CofigWrapper>
-      <Comp configValue={props.configValue || {}} onUpdate={(d) => updateConfigValueById(d)} />
+      <Comp type={type} configValue={props.configValue || {}} onUpdate={(d) => updateConfigValueById(d, currentId)} />
     </CofigWrapper>
   );
 };

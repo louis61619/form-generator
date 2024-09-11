@@ -33,13 +33,21 @@ const Button = styled(UnstyledButton)`
   display: flex;
   align-items: center;
   margin-left: 16px;
+
+  &.primary {
+    background-color: ${theme.color.primary};
+    color: #fff;
+    border: 1px solid ${theme.color.primary};
+  }
 ` as unknown as typeof UnstyledButton;
 
 export const Header: React.FC<{ openModal: () => void }> = ({ openModal }) => {
   return (
     <HeaderWrapper>
       <div>
-        <Button onClick={openModal}>Preview</Button>
+        <Button className="primary" onClick={openModal}>
+          Preview
+        </Button>
         {/* <Button>Ask AI</Button> */}
         <Button component="a" href={packageJSON.repository.url} target="_blank">
           <GithubIcon width={30} height={30} />

@@ -28,7 +28,15 @@ export type ConfigProps<D> = {
 
 export type ViewProps<D> = {
   configValue: Partial<D>;
-  inputProps: any;
+  inputProps: {
+    onChange: any;
+    value?: any;
+    defaultValue?: any;
+    checked?: any;
+    error?: any;
+    onFocus?: any;
+    onBlur?: any;
+  };
 };
 
 export type ConfigCompProps<D = {}> = React.ComponentType<ConfigProps<D>>;

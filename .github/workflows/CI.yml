@@ -17,9 +17,9 @@ jobs:
     USER_EMAIL: louis61619@gmail.com
 
   runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
+  strategy:
+    matrix:
+      node-version: [18.x]
 
   steps:
       - uses: actions/checkout@v1

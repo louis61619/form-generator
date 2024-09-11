@@ -23,6 +23,7 @@ export type ConfigProps<D> = {
   configValue: Partial<D>;
   type: string;
   isInit: boolean;
+  uuid: string;
 };
 
 export type ConfigCompProps<D = {}> = React.ComponentType<ConfigProps<D>>;

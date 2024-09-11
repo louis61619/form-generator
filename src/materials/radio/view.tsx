@@ -1,19 +1,26 @@
 import { PlaygroundCompProps, ViewCompProps } from '../../types/schema';
 import { CompProps } from './type';
-import { Input } from '@mantine/core';
-import { useField } from '@mantine/form';
-import { CommonConfig } from '../common';
+import { Group, Input, Radio } from '@mantine/core';
+import { CommonConfig, CommonInputWrapper } from '../common';
+
+const a = ['1', '2', '3', '4', '5'];
 
 export const View: ViewCompProps<CompProps> = ({ configValue }) => {
-  const field = useField({
-    initialValue: '',
-    validate: (value) => (value.trim().length < 2 ? 'Value is too short' : null),
-    validateOnBlur: true,
-  });
+  const { options, disabled } = configValue;
+
+  console.log('-----');
 
   return (
-    <Input.Wrapper {...configValue}>
-      <Input {...field.getInputProps()} {...configValue} />
-    </Input.Wrapper>
+    <CommonInputWrapper {...configValue}>
+      <Radio.Group
+        onChange={(v) => {
+          console.log(v);
+        }}
+      >
+        <Group>
+          {options?.map((option, index) => <Radio disabled={disabled} key={option} label={option} value={index} />)}
+        </Group>
+      </Radio.Group>
+    </CommonInputWrapper>
   );
 };

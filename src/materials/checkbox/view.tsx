@@ -1,19 +1,21 @@
 import { PlaygroundCompProps, ViewCompProps } from '../../types/schema';
 import { CompProps } from './type';
-import { Input } from '@mantine/core';
+import { Checkbox, Group } from '@mantine/core';
 import { useField } from '@mantine/form';
-import { CommonConfig } from '../common';
+import { CommonInputWrapper } from '../common';
 
 export const View: ViewCompProps<CompProps> = ({ configValue }) => {
-  const field = useField({
-    initialValue: '',
-    validate: (value) => (value.trim().length < 2 ? 'Value is too short' : null),
-    validateOnBlur: true,
-  });
+  const { options, disabled } = configValue;
 
   return (
-    <Input.Wrapper {...configValue}>
-      <Input {...field.getInputProps()} {...configValue} />
-    </Input.Wrapper>
+    <CommonInputWrapper {...configValue}>
+      <Checkbox.Group>
+        <Group>
+          {options?.map((option, index) => (
+            <Checkbox disabled={disabled} key={index} label={option} value={index}></Checkbox>
+          ))}
+        </Group>
+      </Checkbox.Group>
+    </CommonInputWrapper>
   );
 };

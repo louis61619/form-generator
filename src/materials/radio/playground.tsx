@@ -9,7 +9,7 @@ export const Playground: PlaygroundCompProps<CompProps> = ({ uuid, configValue }
   return (
     <CommonInputWrapper {...configValue}>
       <Radio.Group>
-        <Group mt="xs">
+        <Group>
           {options?.map((option, index) => (
             <Radio disabled={disabled} key={index} label={option} value={index}></Radio>
           ))}

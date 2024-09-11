@@ -3,6 +3,7 @@ import { theme } from './theme';
 // import { Button } from '@mantine/core';
 import { UnstyledButton } from '@mantine/core';
 import { ReactComponent as GithubIcon } from '../assets/github.svg';
+import packageJSON from '../../package.json';
 
 const HeaderWrapper = styled.header`
   height: 60px;
@@ -16,6 +17,10 @@ const HeaderWrapper = styled.header`
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
+    @media screen and (max-width: 1000px) {
+      max-width: 400px;
+    }
   }
 `;
 
@@ -29,13 +34,13 @@ const Button = styled(UnstyledButton)`
   margin-left: 16px;
 ` as unknown as typeof UnstyledButton;
 
-export const Header = () => {
+export const Header: React.FC<{ openModal: () => void }> = ({ openModal }) => {
   return (
     <HeaderWrapper>
       <div>
-        <Button>Preview</Button>
-        <Button>Ask AI</Button>
-        <Button>
+        <Button onClick={openModal}>Preview</Button>
+        {/* <Button>Ask AI</Button> */}
+        <Button component="a" href={packageJSON.repository.url} target="_blank">
           <GithubIcon width={30} height={30} />
         </Button>
       </div>

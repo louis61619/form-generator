@@ -6,15 +6,9 @@ import { CommonConfig, CommonInputWrapper } from '../common';
 import { CommonProps } from '@mui/material/OverridableComponent';
 
 export const View: ViewCompProps<CompProps & CommonProps> = ({ configValue }) => {
-  const field = useField({
-    initialValue: '',
-    validate: (value) => (value.trim().length < 2 ? 'Value is too short' : null),
-    validateOnBlur: true,
-  });
-
   return (
     <CommonInputWrapper {...configValue}>
-      <Textarea {...field.getInputProps()} {...configValue} />
+      <Textarea placeholder={configValue.placeholder} rows={configValue.rows} />
     </CommonInputWrapper>
   );
 };

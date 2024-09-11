@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDisclosure } from '@mantine/hooks';
+import { MantineProvider, Modal } from '@mantine/core';
+
 import { Playground } from './playground';
 import { Global, css, Theme } from '@emotion/react';
 import { Header } from './common/header';
 
-import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
+import { PerviewModal } from './common/modal';
 
 function App() {
+  const [opened, { open, close }] = useDisclosure(false);
+
+  const [schema, setSchema] = useState({ type: 'object' });
   return (
     <MantineProvider>
       <Global
@@ -35,9 +41,10 @@ function App() {
         `}
       />
 
-      <Header />
+      <Header openModal={open} />
       <main>
-        <Playground />
+        <Playground schema={schema} setSchema={setSchema} />
+        <PerviewModal schema={schema} opened={opened} onClose={close} />
       </main>
     </MantineProvider>
   );

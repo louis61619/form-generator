@@ -2,6 +2,11 @@
   "name": "form-generator",
   "version": "0.1.0",
   "private": true,
+  "description": "form generator demo with AI",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/louis61619/form-generator.git"
+  },
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",

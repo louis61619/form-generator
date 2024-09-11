@@ -67,6 +67,7 @@ export const Config = () => {
         configValue={props.configValue || {}}
         onUpdate={(d) => updateConfigValueById(d, currentId)}
         isInit={isInit}
+        uuid={currentId}
       />
     </CofigWrapper>
   );

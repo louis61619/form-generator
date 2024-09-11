@@ -23,7 +23,7 @@ export const TypeFeild: ConfigCompProps<CommonConfigProps & { type: string }> = 
 };
 
 export const CommonConfig: ConfigCompProps<CommonConfigProps> = ({ ...props }) => {
-  const { onUpdate, configValue } = props;
+  const { onUpdate, configValue, uuid } = props;
   const { field, label, description } = configValue;
 
   return (
@@ -33,6 +33,7 @@ export const CommonConfig: ConfigCompProps<CommonConfigProps> = ({ ...props }) =
       <Input.Wrapper label="Field">
         <Input
           value={field}
+          placeholder={uuid}
           onChange={(e) => {
             onUpdate({
               ...configValue,

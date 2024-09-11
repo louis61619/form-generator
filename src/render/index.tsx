@@ -58,13 +58,6 @@ export const RenderSchema: React.FC<{ schema: Schema; onChange?: (values: any) =
           );
         })}
       </FormWrapper>
-      <button
-        onClick={() => {
-          console.log(form.getValues());
-        }}
-      >
-        111
-      </button>
     </div>
   );
 };

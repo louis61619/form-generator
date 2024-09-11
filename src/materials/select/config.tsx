@@ -32,6 +32,9 @@ export const Config: ConfigCompProps<CompProps & CommonConfigProps> = ({ ...prop
       <Input.Wrapper label="Options">
         <MultiInput value={configValue.options} onUpdate={(v) => _onUpdate('options', v)} />
       </Input.Wrapper>
+      <Input.Wrapper label="Placeholder">
+        <Input value={configValue.placeholder} onChange={(e) => _onUpdate('placeholder', e.currentTarget.value)} />
+      </Input.Wrapper>
       <Input.Wrapper label="Disabled">
         <Switch checked={configValue.disabled} onChange={(e) => _onUpdate('disabled', e.currentTarget.checked)} />
       </Input.Wrapper>

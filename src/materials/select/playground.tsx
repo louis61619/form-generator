@@ -4,11 +4,11 @@ import { Select } from '@mantine/core';
 import { CommonConfig, CommonInputWrapper } from '../common';
 
 export const Playground: PlaygroundCompProps<CompProps> = ({ uuid, configValue }) => {
-  const { options } = configValue;
+  const { options, placeholder } = configValue;
 
   return (
     <CommonInputWrapper {...configValue}>
-      <Select />
+      <Select  placeholder={placeholder} />
     </CommonInputWrapper>
   );
 };

@@ -8,11 +8,12 @@ import { Header } from './common/header';
 
 import '@mantine/core/styles.css';
 import { PerviewModal } from './common/modal';
+import { sample } from './common/sample';
 
 function App() {
   const [opened, { open, close }] = useDisclosure(false);
 
-  const [schema, setSchema] = useState({ type: 'object' });
+  const [schema, setSchema] = useState(sample);
   return (
     <MantineProvider>
       <Global

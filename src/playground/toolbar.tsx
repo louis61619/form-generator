@@ -64,7 +64,7 @@ const IconBlock = forwardRef<
 
   return (
     <IconBlockWrapper ref={ref} {...props}>
-      {icon}
+      {/* {icon} */}
       <span className="-txt">{name}</span>
     </IconBlockWrapper>
   );

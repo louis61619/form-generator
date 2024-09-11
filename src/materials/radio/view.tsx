@@ -3,22 +3,14 @@ import { CompProps } from './type';
 import { Group, Input, Radio } from '@mantine/core';
 import { CommonConfig, CommonInputWrapper } from '../common';
 
-const a = ['1', '2', '3', '4', '5'];
-
-export const View: ViewCompProps<CompProps> = ({ configValue }) => {
+export const View: ViewCompProps<CompProps> = ({ configValue, inputProps }) => {
   const { options, disabled } = configValue;
-
-  console.log('-----');
 
   return (
     <CommonInputWrapper {...configValue}>
-      <Radio.Group
-        onChange={(v) => {
-          console.log(v);
-        }}
-      >
+      <Radio.Group {...inputProps}>
         <Group>
-          {options?.map((option, index) => <Radio disabled={disabled} key={option} label={option} value={index} />)}
+          {options?.map((option, index) => <Radio disabled={disabled} key={option} label={option} value={option} />)}
         </Group>
       </Radio.Group>
     </CommonInputWrapper>

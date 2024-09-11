@@ -5,10 +5,10 @@ import { useField } from '@mantine/form';
 import { CommonConfig, CommonInputWrapper } from '../common';
 import { CommonProps } from '@mui/material/OverridableComponent';
 
-export const View: ViewCompProps<CompProps & CommonProps> = ({ configValue }) => {
+export const View: ViewCompProps<CompProps & CommonProps> = ({ configValue, inputProps }) => {
   return (
     <CommonInputWrapper {...configValue}>
-      <Textarea placeholder={configValue.placeholder} rows={configValue.rows} />
+      <Textarea placeholder={configValue.placeholder} rows={configValue.rows} {...inputProps} />
     </CommonInputWrapper>
   );
 };

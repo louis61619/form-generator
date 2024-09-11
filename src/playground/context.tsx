@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 import { DragDropContext } from 'react-beautiful-dnd';
 import { CompInfoType, Schema } from '../types/schema';
@@ -63,6 +63,12 @@ export const PlaygroundProvider: React.FC<PlaygroundProviderProps & { children: 
 }) => {
   const [currentId, setCurrentId] = useState<string>('');
   const [initId, setInitId] = useState<string>('');
+
+  useEffect(() => {
+    if (!currentId && schema.order && schema.order.length) {
+      setCurrentId(schema.order[0]);
+    }
+  }, [currentId, schema.order])
 
   const compsMap: { [key: string]: CompInfoType } = useMemo(() => {
     return list.reduce((pre, cur) => {

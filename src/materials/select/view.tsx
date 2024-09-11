@@ -4,14 +4,12 @@ import { Select } from '@mantine/core';
 import { useField } from '@mantine/form';
 import { CommonInputWrapper } from '../common';
 
-export const View: ViewCompProps<CompProps> = ({ configValue }) => {
-  const { options } = configValue;
-
-  console.log(options);
+export const View: ViewCompProps<CompProps> = ({ configValue, inputProps }) => {
+  const { options, placeholder, ...otherConfig } = configValue;
 
   return (
-    <CommonInputWrapper {...configValue}>
-      <Select data={options} {...configValue} />
+    <CommonInputWrapper {...otherConfig}>
+      <Select data={options} placeholder={placeholder} {...inputProps} />
     </CommonInputWrapper>
   );
 };

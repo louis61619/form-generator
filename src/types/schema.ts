@@ -26,11 +26,16 @@ export type ConfigProps<D> = {
   uuid: string;
 };
 
+export type ViewProps<D> = {
+  configValue: Partial<D>;
+  inputProps: any;
+};
+
 export type ConfigCompProps<D = {}> = React.ComponentType<ConfigProps<D>>;
 
 export type PlaygroundCompProps<D = {}> = React.ComponentType<PlaygroundProps<D>>;
 
-export type ViewCompProps<D = {}> = React.ComponentType<{ configValue: Partial<D> }>;
+export type ViewCompProps<D = {}> = React.ComponentType<ViewProps<D>>;
 
 /**
  * @desc config type use in schema, type must be only
@@ -41,6 +46,6 @@ export type CompInfoType<D = {}> = {
   group?: string;
   type: string;
   playground: PlaygroundCompProps<D>;
-  view: React.ComponentType<{ configValue: Partial<D> }>;
+  view: ViewCompProps<D>;
   config: ConfigCompProps<D>;
 };

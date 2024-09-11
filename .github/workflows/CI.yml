@@ -1,4 +1,5 @@
 name: deploy gh-pages
+
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
@@ -9,13 +10,13 @@ on:
 jobs:
   build:
     name: Build and deploy gh-pages
-  env:
-    MY_SECRET: ${{secrets.commit_secret}}
-    PUBLISH_DIR: ./build
-    USER_NAME: louis61619
-    USER_EMAIL: louis61619@gmail.com
-  runs-on: ubuntu-latest
-  strategy:
+    env:
+      MY_SECRET: ${{secrets.commit_secret}}
+      USER_NAME: louis61619
+      USER_EMAIL: louis61619@gmail.com
+      PUBLISH_DIR: ./build
+    runs-on: ubuntu-latest
+    strategy:
       matrix:
         node-version: [18.x]
   steps:

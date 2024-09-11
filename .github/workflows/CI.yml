@@ -15,6 +15,7 @@ jobs:
       USER_NAME: louis61619
       USER_EMAIL: louis61619@gmail.com
       PUBLISH_DIR: ./build
+      CI: false
     runs-on: ubuntu-latest
     strategy:
       matrix:

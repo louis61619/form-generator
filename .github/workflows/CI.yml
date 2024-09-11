@@ -9,18 +9,15 @@ on:
 jobs:
   build:
     name: Build and deploy gh-pages
-
   env:
     MY_SECRET: ${{secrets.commit_secret}}
     PUBLISH_DIR: ./build
     USER_NAME: louis61619
     USER_EMAIL: louis61619@gmail.com
-
   runs-on: ubuntu-latest
   strategy:
-    matrix:
-      node-version: [18.x]
-
+      matrix:
+        node-version: [18.x]
   steps:
       - uses: actions/checkout@v1
       - name: Use Node.js ${{ matrix.node-version }}

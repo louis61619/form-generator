@@ -13,4 +13,5 @@ export type CompInfoType<D = {}> = {
   type: string;
   view: ViewCompProps<D>;
   config: ConfigCompProps<D>;
+  desp?: string;
 };

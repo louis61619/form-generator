@@ -1,4 +1,4 @@
-import { Schema } from '../types/schema';
+import { Schema } from '@l-lib/low-code-engine';
 
 export function getKeepKeyToIdMap(schema: Schema) {
   if (!schema) {

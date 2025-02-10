@@ -1,4 +1,4 @@
-import { PlaygroundCompProps, ViewCompProps } from '../../types/schema';
+import { ViewCompProps } from '../../type';
 import { CompProps } from './type';
 import { Select } from '@mantine/core';
 import { useField } from '@mantine/form';

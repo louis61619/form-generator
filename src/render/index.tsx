@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { CompInfoType, Schema } from '../types/schema';
-import { list } from '../playground/list';
+import { Schema } from '@l-lib/low-code-engine';
+import { CompInfoType } from '../type';
+import { list } from '../materials';
 import styled from '@emotion/styled';
 import { useForm } from '@mantine/form';
 
@@ -49,6 +50,7 @@ export const RenderSchema: React.FC<{ schema: Schema; onChange?: (values: any) =
           return (
             <Comp
               key={key}
+              uuid={key}
               configValue={field.configValue || {}}
               inputProps={{
                 ...inputAction,

@@ -4,7 +4,6 @@ import { theme } from './theme';
 import { UnstyledButton } from '@mantine/core';
 import { ReactComponent as GithubIcon } from '../assets/github.svg';
 import packageJSON from '../../package.json';
-import { SegmentedControl } from '@mantine/core';
 
 const HeaderWrapper = styled.header`
   height: 60px;

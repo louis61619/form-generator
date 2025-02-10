@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { MultiInput } from '../../common/multi-input';
-import { ConfigCompProps } from '../../types/schema';
+import { ConfigCompProps } from '@l-lib/low-code-engine';
 import { CompProps } from './type';
 import { CommonConfig, CommonConfigProps } from '../common';
 import { Switch, Input } from '@mantine/core';

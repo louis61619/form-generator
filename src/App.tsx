@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { MantineProvider, Modal } from '@mantine/core';
 
-import { Playground } from './playground';
-import { Global, css, Theme } from '@emotion/react';
+import { Playground } from '@l-lib/low-code-engine';
+import { Global, css } from '@emotion/react';
 import { Header } from './common/header';
+import { list } from './materials';
 
 import '@mantine/core/styles.css';
 import { PerviewModal } from './common/modal';
@@ -44,7 +45,7 @@ function App() {
 
       <Header openModal={open} />
       <main>
-        <Playground schema={schema} setSchema={setSchema} />
+        <Playground schema={schema} setSchema={setSchema} list={list} />
         <PerviewModal schema={schema} opened={opened} onClose={close} />
       </main>
     </MantineProvider>

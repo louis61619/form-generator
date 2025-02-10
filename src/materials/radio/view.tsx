@@ -1,4 +1,4 @@
-import { PlaygroundCompProps, ViewCompProps } from '../../types/schema';
+import { ViewCompProps } from '../../type';
 import { CompProps } from './type';
 import { Group, Input, Radio } from '@mantine/core';
 import { CommonConfig, CommonInputWrapper } from '../common';

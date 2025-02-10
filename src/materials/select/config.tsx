@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from 'react';
 import { Switch, Input, ActionIcon } from '@mantine/core';
 
-import { ConfigCompProps } from '../../types/schema';
+import { ConfigCompProps } from '@l-lib/low-code-engine';
 import { CompProps } from './type';
 import { CommonConfig, CommonConfigProps } from '../common';
 

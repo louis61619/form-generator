@@ -1,6 +1,6 @@
 import { useDisclosure } from '@mantine/hooks';
 import { Button, SegmentedControl, Modal, ModalBaseProps, ModalRootProps } from '@mantine/core';
-import { Schema } from '../types/schema';
+import { Schema } from '@l-lib/low-code-engine';
 import { RenderSchema } from '../render';
 import styled from '@emotion/styled';
 import { useEffect, useState, useRef } from 'react';

@@ -1,8 +1,5 @@
-import { Icon } from '@iconify/react';
-import Column from '@iconify/icons-material-symbols/view-column-outline-sharp';
-import { Playground } from './playground';
 import { View } from './view';
-import { CompInfoType } from '../../types/schema';
+import { CompInfoType } from '../../type';
 import { Config } from './config';
 import { CompProps } from './type';
 
@@ -10,8 +7,7 @@ export const compInfo: CompInfoType<CompProps> = {
   // icon: <Icon icon={Column} />,
   type: 'checkbox',
   name: 'checkbox',
-  group: 'basic',
-  playground: Playground,
+  group: 'form',
   view: View,
   config: Config,
 };

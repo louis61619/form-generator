@@ -1,4 +1,4 @@
-import { Schema } from '../types/schema';
+import { Schema } from '@l-lib/low-code-engine';
 
 export const sample: Schema = {
   type: 'object',

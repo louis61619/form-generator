@@ -1,4 +1,4 @@
-import { ConfigCompProps } from '../../types/schema';
+import { ConfigCompProps } from '@l-lib/low-code-engine';
 import { CompProps } from './type';
 import { CommonConfig, CommonConfigProps } from '../common';
 import { Switch, Input } from '@mantine/core';

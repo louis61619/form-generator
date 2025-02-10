@@ -1,5 +1,5 @@
 import { Title } from '../common/title';
-import { ConfigCompProps } from '../types/schema';
+import { ConfigCompProps } from '@l-lib/low-code-engine';
 import { Input, Badge } from '@mantine/core';
 
 const size = 'small';

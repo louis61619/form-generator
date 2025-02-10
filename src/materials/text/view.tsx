@@ -1,4 +1,4 @@
-import { PlaygroundCompProps, ViewCompProps } from '../../types/schema';
+import { ViewCompProps } from '@l-lib/low-code-engine';
 import { CompProps } from './type';
 import { Input, Text } from '@mantine/core';
 import { useField } from '@mantine/form';

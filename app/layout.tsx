@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Louis Portfolio',
-  description: 'Louis Portfolio',
+  title: 'AI low code platform',
+  description: 'AI low code platform',
 };
 
 export default function RootLayout({
@@ -24,11 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-Hant">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <main className="flex flex-col items-center">
-          <div className="max-w-screen-xl self-stretch m-auto w-full">{children}</div>
-        </main>
-      </body>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
     </html>
   );
 }

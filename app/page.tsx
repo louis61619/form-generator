@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { MantineProvider, Modal } from '@mantine/core';
@@ -15,6 +16,7 @@ function App() {
   const [opened, { open, close }] = useDisclosure(false);
 
   const [schema, setSchema] = useState(sample);
+
   return (
     <MantineProvider>
       <Global

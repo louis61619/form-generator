@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { theme } from './theme';
 // import { Button } from '@mantine/core';
 import { UnstyledButton } from '@mantine/core';
-import { ReactComponent as GithubIcon } from '../assets/github.svg';
+import GithubIcon from '../assets/github.svg';
 import packageJSON from '../../package.json';
 
 const HeaderWrapper = styled.header`

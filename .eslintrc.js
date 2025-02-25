@@ -3,7 +3,7 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: ['react-app', 'react-app/jest', 'plugin:prettier/recommended'],
+  extends: ['next/core-web-vitals', 'next/typescript', 'plugin:prettier/recommended'],
   rules: {
     '@typescript-eslint/no-unused-vars': 'warn',
     'prettier/prettier': 'warn',

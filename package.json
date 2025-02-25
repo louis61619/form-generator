@@ -13,10 +13,10 @@
     "@emotion/styled": "^11.11.0",
     "@iconify/icons-material-symbols": "^1.2.58",
     "@iconify/react": "^4.1.1",
-    "@l-lib/low-code-engine": "^0.0.6",
-    "@mantine/core": "^7.12.2",
-    "@mantine/form": "^7.12.2",
-    "@mantine/hooks": "^7.12.2",
+    "@l-lib/low-code-engine": "^0.0.8",
+    "@mantine/core": "^7.17.0",
+    "@mantine/form": "^7.17.0",
+    "@mantine/hooks": "^7.17.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.69",
     "@types/react": "^18.2.46",
@@ -51,11 +51,11 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@svgr/webpack": "^8.1.0",
     "@types/react-beautiful-dnd": "^13.1.8",
     "@types/webpack-env": "^1.18.5",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
-    "prettier": "^3.2.4",
-    "@svgr/webpack": "^8.1.0"
+    "prettier": "^3.2.4"
   }
 }

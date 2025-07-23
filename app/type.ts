@@ -1,12 +1,12 @@
 import { ViewProps, ConfigCompProps } from '@l-lib/low-code-engine';
 
-export type ViewCompProps<D = {}> = React.ComponentType<
+export type ViewCompProps<D = object> = React.ComponentType<
   ViewProps<D> & {
     inputProps?: any;
   }
 >;
 
-export type CompInfoType<D = {}> = {
+export type CompInfoType<D = object> = {
   prefix?: JSX.Element;
   name: string;
   group?: string;

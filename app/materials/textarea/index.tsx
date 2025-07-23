@@ -9,10 +9,4 @@ export const compInfo: CompInfoType<CompProps> = {
   group: 'form',
   view: View,
   config: Config,
-  desp: `
-      這是一個多行文本輸入框組件，用於輸入多行文本。
-      參數介紹如下：
-      placeholder 提示文字
-      rows 行數
-  `,
 };

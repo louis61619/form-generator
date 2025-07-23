@@ -1,9 +1,8 @@
-import { useDisclosure } from '@mantine/hooks';
-import { Button, SegmentedControl, Modal, ModalBaseProps, ModalRootProps } from '@mantine/core';
-import { Schema } from '@l-lib/low-code-engine';
-import { RenderSchema } from '../render';
 import styled from '@emotion/styled';
-import { useEffect, useState, useRef } from 'react';
+import { Schema } from '@l-lib/low-code-engine';
+import { Modal, ModalBaseProps, SegmentedControl } from '@mantine/core';
+import { useState } from 'react';
+import { RenderSchema } from '../render';
 
 type ModalProps = ModalBaseProps;
 type CompProps = React.FC<{ schema: Schema } & ModalProps>;

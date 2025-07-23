@@ -9,13 +9,17 @@ import { Header } from './common/header';
 import { list } from './materials';
 
 import '@mantine/core/styles.css';
-import { PerviewModal } from './common/modal';
+import { PerviewModal } from './common/preview-modal';
 import { sample } from './common/sample';
+import { AskModal } from './common/ask-modal';
 
 function App() {
-  const [opened, { open, close }] = useDisclosure(false);
+  const [previewOpened, { open: openPreview, close: closePreview }] = useDisclosure(false);
+  const [askAIOpened, { open: openAskAIModal, close: closeAskAIModal }] = useDisclosure(false);
 
   const [schema, setSchema] = useState(sample);
+
+  console.log('schema', schema, sample);
 
   return (
     <MantineProvider>
@@ -42,13 +46,18 @@ function App() {
           :root {
             border-color: #e4e7ed;
           }
+
+          .mantine-InputWrapper-description {
+            margin-bottom: 4px;
+          }
         `}
       />
 
-      <Header openModal={open} />
+      <Header openPreviewModal={openPreview} openAskAIModal={openAskAIModal} />
       <main>
         <Playground schema={schema} setSchema={setSchema} list={list} />
-        <PerviewModal schema={schema} opened={opened} onClose={close} />
+        <PerviewModal schema={schema} opened={previewOpened} onClose={closePreview} />
+        <AskModal opened={askAIOpened} onClose={closeAskAIModal} setSchema={setSchema} />
       </main>
     </MantineProvider>
   );

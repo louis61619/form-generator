@@ -38,16 +38,27 @@ const Button = styled(UnstyledButton)`
     color: #fff;
     border: 1px solid ${theme.color.primary};
   }
+
+  &.gradients {
+    border: none;
+    background: linear-gradient(to right, rgb(252, 92, 125), rgb(106, 130, 251));
+    color: #fff;
+  }
 ` as unknown as typeof UnstyledButton;
 
-export const Header: React.FC<{ openModal: () => void }> = ({ openModal }) => {
+export const Header: React.FC<{ openPreviewModal: () => void; openAskAIModal: () => void }> = ({
+  openPreviewModal,
+  openAskAIModal,
+}) => {
   return (
     <HeaderWrapper>
       <div>
-        <Button className="primary" onClick={openModal}>
+        <Button className="primary" onClick={openPreviewModal}>
           Preview
         </Button>
-        {/* <Button>Ask AI</Button> */}
+        <Button className="gradients" onClick={openAskAIModal}>
+          Ask AI
+        </Button>
         <Button component="a" href={packageJSON.repository.url} target="_blank">
           <GithubIcon width={30} height={30} />
         </Button>

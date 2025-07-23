@@ -9,11 +9,15 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   /* config options here */
-  webpack(config) {
+  webpack(config, { isServer }) {
     config.module.rules.push({
       test: /\.svg$/i,
       use: ['@svgr/webpack'],
     });
+
+    if (isServer) {
+      config.resolve.fallback = { ...config.resolve.fallback, fs: false, path: false };
+    }
 
     return config;
   },

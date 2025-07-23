@@ -13,7 +13,7 @@
     "@emotion/styled": "^11.11.0",
     "@iconify/icons-material-symbols": "^1.2.58",
     "@iconify/react": "^4.1.1",
-    "@l-lib/low-code-engine": "^0.0.8",
+    "@l-lib/low-code-engine": "^0.0.9",
     "@mantine/core": "^7.17.0",
     "@mantine/form": "^7.17.0",
     "@mantine/hooks": "^7.17.0",

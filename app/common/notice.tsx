@@ -29,7 +29,12 @@ const NoticeWrapper = styled.div`
 export function Notice({ noticeParams }: { noticeParams: { msg: string; title: string } }) {
   const [showNotice, setShowNotice] = useState(false);
   const [showAnimation, setShowAnimation] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { msg, title } = noticeParams;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const { msg } = noticeParams
@@ -67,6 +72,10 @@ export function Notice({ noticeParams }: { noticeParams: { msg: string; title: s
       setShowAnimation(false);
     }
   }, [showNotice]);
+
+  if (!mounted) {
+    return null;
+  }
 
   return createPortal(
     <NoticeWrapper>

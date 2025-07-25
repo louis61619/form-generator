@@ -83,7 +83,7 @@ export const getJSONSchemaWithPrompt = async (msg: string) => {
       temperature: 0,
       response_format: { type: 'json_object' },
     },
-    apiKey: process.env.API_KEY,
+    apiKey: process.env.OPENAI_API_KEY,
   });
 
   if (result.choices?.[0]?.message?.content) {

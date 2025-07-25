@@ -15,7 +15,7 @@ export const Config: ConfigCompProps<CompProps & CommonConfigProps> = ({ ...prop
       <TypeFeild {...props} />
       <Title>Props</Title>
       <Input.Wrapper label="Content">
-        <Input onChange={(e) => _onUpdate('content', e.currentTarget.value)}></Input>
+        <Input value={configValue.content} onChange={(e) => _onUpdate('content', e.currentTarget.value)}></Input>
       </Input.Wrapper>
     </div>
   );

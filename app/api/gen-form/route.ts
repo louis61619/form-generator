@@ -33,9 +33,7 @@ export async function POST(request: NextRequest) {
     const { content, result } = await getJSONSchemaWithPrompt(msg);
     if (!content) {
       return NextResponse.json(
-        {
-          error: result,
-        },
+        result,
         {
           status: 400,
           statusText: 'Bad Request',

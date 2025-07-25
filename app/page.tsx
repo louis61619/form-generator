@@ -12,14 +12,17 @@ import '@mantine/core/styles.css';
 import { PerviewModal } from './common/preview-modal';
 import { sample } from './common/sample';
 import { AskModal } from './common/ask-modal';
+import { Notice } from './common/notice';
 
 function App() {
   const [previewOpened, { open: openPreview, close: closePreview }] = useDisclosure(false);
   const [askAIOpened, { open: openAskAIModal, close: closeAskAIModal }] = useDisclosure(false);
-
+  const [noticeParams, setNoticeParams] = useState({ msg: '', title: '' });
   const [schema, setSchema] = useState(sample);
 
-  console.log('schema', schema, sample);
+  const setNoticeError = (msg: string) => {
+    setNoticeParams({ msg, title: 'Error' });
+  }
 
   return (
     <MantineProvider>
@@ -57,7 +60,8 @@ function App() {
       <main>
         <Playground schema={schema} setSchema={setSchema} list={list} />
         <PerviewModal schema={schema} opened={previewOpened} onClose={closePreview} />
-        <AskModal opened={askAIOpened} onClose={closeAskAIModal} setSchema={setSchema} />
+        <AskModal opened={askAIOpened} onClose={closeAskAIModal} setSchema={setSchema} setNoticeError={setNoticeError} />
+        <Notice noticeParams={noticeParams} />
       </main>
     </MantineProvider>
   );

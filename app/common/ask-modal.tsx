@@ -2,13 +2,14 @@ import styled from '@emotion/styled';
 import { Schema } from '@l-lib/low-code-engine';
 import { Button, Input, Modal, ModalBaseProps, SegmentedControl, Space, Textarea } from '@mantine/core';
 import { useState } from 'react';
+import { Notice } from './notice'
 
 type ModalProps = ModalBaseProps;
-type CompProps = React.FC<ModalProps & { setSchema: (schema: Schema) => void }>;
+type CompProps = React.FC<ModalProps & { setSchema: (schema: Schema) => void; setNoticeError: (msg: string) => void }>;
 
 const ModalWrapper = styled(Modal.Root)``;
 
-export const AskModal: CompProps = ({ opened, onClose, setSchema, ...props }) => {
+export const AskModal: CompProps = ({ opened, onClose, setSchema, setNoticeError, ...props }) => {
   const [isMounted, setMounted] = useState('');
   const [question, setQuestion] = useState('');
   const [loading, setLoading] = useState(false);
@@ -42,8 +43,9 @@ export const AskModal: CompProps = ({ opened, onClose, setSchema, ...props }) =>
           />
           <Space h="md" />
           <Button
-            loading={loading}
+            // loading={loading}
             onClick={() => {
+              
               setLoading(true);
               fetch((process.env.NEXT_PUBLIC_API_URL || '') + '/api/gen-form', {
                 method: 'POST',
@@ -54,6 +56,10 @@ export const AskModal: CompProps = ({ opened, onClose, setSchema, ...props }) =>
               })
                 .then((response) => response.json())
                 .then((data) => {
+                  if (data.error) {
+                    setNoticeError(`You didn't provide an API key.`);
+                    return;
+                  }
                   setSchema(data.schema as Schema);
                   onClose();
                 })

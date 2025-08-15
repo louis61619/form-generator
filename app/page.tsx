@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { MantineProvider, Modal } from '@mantine/core';
 
@@ -19,10 +19,11 @@ function App() {
   const [askAIOpened, { open: openAskAIModal, close: closeAskAIModal }] = useDisclosure(false);
   const [noticeParams, setNoticeParams] = useState({ msg: '', title: '' });
   const [schema, setSchema] = useState(sample);
+  const [apiKey, setApiKey] = useState('');
 
   const setNoticeError = (msg: string) => {
     setNoticeParams({ msg, title: 'Error' });
-  }
+  };
 
   return (
     <MantineProvider>
@@ -60,7 +61,14 @@ function App() {
       <main>
         <Playground schema={schema} setSchema={setSchema} list={list} />
         <PerviewModal schema={schema} opened={previewOpened} onClose={closePreview} />
-        <AskModal opened={askAIOpened} onClose={closeAskAIModal} setSchema={setSchema} setNoticeError={setNoticeError} />
+        <AskModal
+          opened={askAIOpened}
+          onClose={closeAskAIModal}
+          setSchema={setSchema}
+          setNoticeError={setNoticeError}
+          apiKey={apiKey}
+          setApiKey={setApiKey}
+        />
         <Notice noticeParams={noticeParams} />
       </main>
     </MantineProvider>

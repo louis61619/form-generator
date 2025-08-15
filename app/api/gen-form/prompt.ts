@@ -65,7 +65,7 @@ const getSchemaPrompt = (): string => {
 
 const _schemaPrompt = getSchemaPrompt();
 
-export const getJSONSchemaWithPrompt = async (msg: string) => {
+export const getJSONSchemaWithPrompt = async (msg: string, apiKey: string) => {
   const result = await completionsCreate({
     model: 'gpt-4o',
     messages: [
@@ -83,7 +83,7 @@ export const getJSONSchemaWithPrompt = async (msg: string) => {
       temperature: 0,
       response_format: { type: 'json_object' },
     },
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: apiKey || process.env.OPENAI_API_KEY,
   });
 
   if (result.choices?.[0]?.message?.content) {

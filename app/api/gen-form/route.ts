@@ -29,16 +29,13 @@ const resultFieldsJSONToSchema = (result: string) => {
 
 export async function POST(request: NextRequest) {
   try {
-    const { msg } = await request.json();
-    const { content, result } = await getJSONSchemaWithPrompt(msg);
+    const { msg, apiKey } = await request.json();
+    const { content, result } = await getJSONSchemaWithPrompt(msg, apiKey);
     if (!content) {
-      return NextResponse.json(
-        result,
-        {
-          status: 400,
-          statusText: 'Bad Request',
-        },
-      );
+      return NextResponse.json(result, {
+        status: 400,
+        statusText: 'Bad Request',
+      });
     }
     return NextResponse.json({
       schema: resultFieldsJSONToSchema(content),
@@ -54,4 +51,10 @@ export async function POST(request: NextRequest) {
       },
     );
   }
+}
+
+export async function GET(request: NextRequest) {
+  return {
+    hasKey: !!process.env.API_KEY,
+  };
 }
